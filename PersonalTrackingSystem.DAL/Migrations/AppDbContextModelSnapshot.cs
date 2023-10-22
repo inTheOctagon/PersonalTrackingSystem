@@ -259,8 +259,9 @@ namespace PersonalTrackingSystem.DAL.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Seniority")
-                        .HasColumnType("int");
+                    b.Property<string>("Seniority")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");

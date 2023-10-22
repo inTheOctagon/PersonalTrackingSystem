@@ -12,7 +12,7 @@ namespace PersonalTrackingSystem.Entity.Concrete
     {
         public string Department { get; set; }
         public string Job { get; set; }
-        public Seniority Seniority { get; set; }
+        public string Seniority { get; set; }
         public decimal Salary { get; set; }
         public DateTime StartDate { get; set; }
         //Navs

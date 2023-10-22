@@ -128,7 +128,7 @@ namespace PersonalTrackingSystem.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Job = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Seniority = table.Column<int>(type: "int", nullable: false),
+                    Seniority = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PersonalID = table.Column<int>(type: "int", nullable: false),

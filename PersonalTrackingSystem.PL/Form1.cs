@@ -1,5 +1,6 @@
 using Microsoft.IdentityModel.Tokens;
 using PersonalTrackingSystem.BL.Concrete;
+using PersonalTrackingSystem.Entity.Common;
 using PersonalTrackingSystem.Entity.Concrete;
 
 namespace PersonalTrackingSystem.PL
@@ -10,6 +11,7 @@ namespace PersonalTrackingSystem.PL
         private BaseManager<PersonalFile> personalFileManager;
         private BaseManager<PersonalEducation> personalEducationManager;
         private BaseManager<PersonalPosition> personalPositionManager;
+        private BaseManager<PersonalLeave> personalLeaveManager;
         private List<Panel> panels;
         public Form1()
         {
@@ -18,13 +20,18 @@ namespace PersonalTrackingSystem.PL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            panels = new List<Panel>() { P_PersonalBasisModule, P_PersonalFileModule };
+            panels = new List<Panel>() { P_PersonalBasisModule, P_PersonalFileModule, P_PersonalEducationModule, P_PersonalPositionModule, P_PersonalLeaveModule };
+
+            CB_Seniority_PersonalPositionModule.Items.Add(Seniority.Junior);
+            CB_Seniority_PersonalPositionModule.Items.Add(Seniority.Mid);
+            CB_Seniority_PersonalPositionModule.Items.Add(Seniority.Senior);
 
             #region Setting Managers
             personalBasisManager = new BaseManager<PersonalBasis>();
             personalFileManager = new BaseManager<PersonalFile>();
             personalEducationManager = new BaseManager<PersonalEducation>();
             personalPositionManager = new BaseManager<PersonalPosition>();
+            personalLeaveManager = new BaseManager<PersonalLeave>();
             #endregion
 
             #region Setting DGVs
@@ -32,6 +39,7 @@ namespace PersonalTrackingSystem.PL
             DGV_PersonalFileModule.DataSource = personalFileManager.GetAll();
             DGV_PersonalEducationModule.DataSource = personalEducationManager.GetAll();
             DGV_PersonalPositionModule.DataSource = personalPositionManager.GetAll();
+            DGV_PersonalLeaveModule.DataSource = personalLeaveManager.GetAll();
             #endregion
 
             FillComboBoxes();
@@ -212,19 +220,6 @@ namespace PersonalTrackingSystem.PL
         }
         #endregion
 
-        #region HelperMethods
-        private void FillComboBoxes()
-        {
-            var allPersonel = personalBasisManager.GetAll();
-
-            foreach (var personal in allPersonel)
-            {
-                CB_ID_PersonalFileModule.Items.Add(personal.ID);
-            }
-        }
-
-        #endregion
-
         #region PersonalEducationModule
         private void B_CertificatePath_PersonalEducationModule_Click(object sender, EventArgs e)
         {
@@ -279,6 +274,7 @@ namespace PersonalTrackingSystem.PL
 
         #endregion
 
+        #region PersonalPositionModule
         private void B_Enter_PersonalPositionModule_Click(object sender, EventArgs e)
         {
             int PID;
@@ -297,7 +293,9 @@ namespace PersonalTrackingSystem.PL
                     PersonalID = PID,
                     Job = TB_InstutionName_PersonalEducationModule.Text,
                     Salary = salary,
-                    Department = TB_Department_PersonalPositionModule.Text
+                    Department = TB_Department_PersonalPositionModule.Text,
+                    Seniority = CB_Seniority_PersonalPositionModule.Text,
+                    StartDate = DTP_StartDate_PersonalEducationModule.Value
                 };
 
                 personalPositionManager.Add(pp);
@@ -317,6 +315,54 @@ namespace PersonalTrackingSystem.PL
         private void B_NextPage_PersonalPositionModule_Click(object sender, EventArgs e)
         {
             panels[4].BringToFront();
+        }
+        #endregion
+
+        #region HelperMethods
+        private void FillComboBoxes()
+        {
+            var allPersonel = personalBasisManager.GetAll();
+
+            foreach (var personal in allPersonel)
+            {
+                CB_ID_PersonalFileModule.Items.Add(personal.ID);
+                CB_ID_PersonalEducationModule.Items.Add(personal.ID);
+                CB_ID_PersonalPositionModule.Items.Add(personal.ID);
+                CB_ID_PersonalLeaveModule.Items.Add(personal.ID);
+            }
+        }
+
+        #endregion
+
+        private void B_Enter_PersonalLeaveModule_Click(object sender, EventArgs e)
+        {
+            int PID;
+
+            if (!string.IsNullOrEmpty(TB_Description_PersonalLeaveModule.Text) &&
+                int.TryParse(CB_ID_PersonalLeaveModule.Text, out PID)
+                )
+
+            {
+                PersonalLeave pl = new()
+                {
+                    PersonalID = PID,
+                    Description = TB_Description_PersonalLeaveModule.Text,
+                    LeaveDate = DTP_LeaveDate_PersonalLeaveModule.Value
+
+                };
+
+                personalLeaveManager.Add(pl);
+                DGV_PersonalLeaveModule.DataSource = personalLeaveManager.GetAll();
+            }
+            else
+            {
+                MessageBox.Show("Bütün verilerin uygun bir biçimde girildiðinden emin olunuz.");
+            }
+        }
+
+        private void B_PreviousPage_PersonalLeaveModule_Click(object sender, EventArgs e)
+        {
+            panels[3].BringToFront();
         }
     }
 }

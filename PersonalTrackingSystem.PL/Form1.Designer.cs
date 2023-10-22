@@ -91,6 +91,16 @@
             DGV_PersonalPositionModule = new DataGridView();
             B_Enter_PersonalPositionModule = new Button();
             label5 = new Label();
+            P_PersonalLeaveModule = new Panel();
+            DTP_LeaveDate_PersonalLeaveModule = new DateTimePicker();
+            B_PreviousPage_PersonalLeaveModule = new Button();
+            label7 = new Label();
+            label9 = new Label();
+            CB_ID_PersonalLeaveModule = new ComboBox();
+            TB_Description_PersonalLeaveModule = new TextBox();
+            DGV_PersonalLeaveModule = new DataGridView();
+            B_Enter_PersonalLeaveModule = new Button();
+            label10 = new Label();
             P_PersonalBasisModule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_PersonalBasisModule).BeginInit();
             P_PersonalFileModule.SuspendLayout();
@@ -99,6 +109,8 @@
             ((System.ComponentModel.ISupportInitialize)DGV_PersonalEducationModule).BeginInit();
             P_PersonalPositionModule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_PersonalPositionModule).BeginInit();
+            P_PersonalLeaveModule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGV_PersonalLeaveModule).BeginInit();
             SuspendLayout();
             // 
             // P_PersonalBasisModule
@@ -667,7 +679,6 @@
             // CB_Seniority_PersonalPositionModule
             // 
             CB_Seniority_PersonalPositionModule.FormattingEnabled = true;
-            CB_Seniority_PersonalPositionModule.Items.AddRange(new object[] { "Junior", "Mid", "Senior" });
             CB_Seniority_PersonalPositionModule.Location = new Point(513, 289);
             CB_Seniority_PersonalPositionModule.Name = "CB_Seniority_PersonalPositionModule";
             CB_Seniority_PersonalPositionModule.Size = new Size(121, 23);
@@ -750,12 +761,115 @@
             label5.TabIndex = 2;
             label5.Text = "Personel Pozisyon Modulü";
             // 
+            // P_PersonalLeaveModule
+            // 
+            P_PersonalLeaveModule.BackColor = SystemColors.GradientInactiveCaption;
+            P_PersonalLeaveModule.Controls.Add(DTP_LeaveDate_PersonalLeaveModule);
+            P_PersonalLeaveModule.Controls.Add(B_PreviousPage_PersonalLeaveModule);
+            P_PersonalLeaveModule.Controls.Add(label7);
+            P_PersonalLeaveModule.Controls.Add(label9);
+            P_PersonalLeaveModule.Controls.Add(CB_ID_PersonalLeaveModule);
+            P_PersonalLeaveModule.Controls.Add(TB_Description_PersonalLeaveModule);
+            P_PersonalLeaveModule.Controls.Add(DGV_PersonalLeaveModule);
+            P_PersonalLeaveModule.Controls.Add(B_Enter_PersonalLeaveModule);
+            P_PersonalLeaveModule.Controls.Add(label10);
+            P_PersonalLeaveModule.Location = new Point(12, 12);
+            P_PersonalLeaveModule.Name = "P_PersonalLeaveModule";
+            P_PersonalLeaveModule.Size = new Size(660, 578);
+            P_PersonalLeaveModule.TabIndex = 4;
+            // 
+            // DTP_LeaveDate_PersonalLeaveModule
+            // 
+            DTP_LeaveDate_PersonalLeaveModule.Location = new Point(86, 221);
+            DTP_LeaveDate_PersonalLeaveModule.MaxDate = new DateTime(2023, 12, 31, 0, 0, 0, 0);
+            DTP_LeaveDate_PersonalLeaveModule.MinDate = new DateTime(2002, 1, 1, 0, 0, 0, 0);
+            DTP_LeaveDate_PersonalLeaveModule.Name = "DTP_LeaveDate_PersonalLeaveModule";
+            DTP_LeaveDate_PersonalLeaveModule.Size = new Size(200, 23);
+            DTP_LeaveDate_PersonalLeaveModule.TabIndex = 11;
+            // 
+            // B_PreviousPage_PersonalLeaveModule
+            // 
+            B_PreviousPage_PersonalLeaveModule.Location = new Point(265, 552);
+            B_PreviousPage_PersonalLeaveModule.Name = "B_PreviousPage_PersonalLeaveModule";
+            B_PreviousPage_PersonalLeaveModule.Size = new Size(115, 23);
+            B_PreviousPage_PersonalLeaveModule.TabIndex = 10;
+            B_PreviousPage_PersonalLeaveModule.Text = "Önceki Sayfa";
+            B_PreviousPage_PersonalLeaveModule.UseVisualStyleBackColor = true;
+            B_PreviousPage_PersonalLeaveModule.Click += B_PreviousPage_PersonalLeaveModule_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(21, 224);
+            label7.Name = "label7";
+            label7.Size = new Size(59, 15);
+            label7.TabIndex = 9;
+            label7.Text = "İzin Tarihi:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(18, 114);
+            label9.Name = "label9";
+            label9.Size = new Size(69, 15);
+            label9.TabIndex = 9;
+            label9.Text = "Personel ID:";
+            // 
+            // CB_ID_PersonalLeaveModule
+            // 
+            CB_ID_PersonalLeaveModule.FormattingEnabled = true;
+            CB_ID_PersonalLeaveModule.Location = new Point(93, 111);
+            CB_ID_PersonalLeaveModule.Name = "CB_ID_PersonalLeaveModule";
+            CB_ID_PersonalLeaveModule.Size = new Size(121, 23);
+            CB_ID_PersonalLeaveModule.TabIndex = 8;
+            // 
+            // TB_Description_PersonalLeaveModule
+            // 
+            TB_Description_PersonalLeaveModule.HideSelection = false;
+            TB_Description_PersonalLeaveModule.Location = new Point(21, 158);
+            TB_Description_PersonalLeaveModule.MaxLength = 300;
+            TB_Description_PersonalLeaveModule.Name = "TB_Description_PersonalLeaveModule";
+            TB_Description_PersonalLeaveModule.PlaceholderText = "İzin Açıklaması:";
+            TB_Description_PersonalLeaveModule.Size = new Size(614, 23);
+            TB_Description_PersonalLeaveModule.TabIndex = 0;
+            // 
+            // DGV_PersonalLeaveModule
+            // 
+            DGV_PersonalLeaveModule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_PersonalLeaveModule.Location = new Point(21, 378);
+            DGV_PersonalLeaveModule.Name = "DGV_PersonalLeaveModule";
+            DGV_PersonalLeaveModule.RowTemplate.Height = 25;
+            DGV_PersonalLeaveModule.Size = new Size(614, 172);
+            DGV_PersonalLeaveModule.TabIndex = 5;
+            // 
+            // B_Enter_PersonalLeaveModule
+            // 
+            B_Enter_PersonalLeaveModule.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            B_Enter_PersonalLeaveModule.Location = new Point(254, 324);
+            B_Enter_PersonalLeaveModule.Name = "B_Enter_PersonalLeaveModule";
+            B_Enter_PersonalLeaveModule.Size = new Size(109, 34);
+            B_Enter_PersonalLeaveModule.TabIndex = 3;
+            B_Enter_PersonalLeaveModule.Text = "Giriş";
+            B_Enter_PersonalLeaveModule.UseVisualStyleBackColor = true;
+            B_Enter_PersonalLeaveModule.Click += B_Enter_PersonalLeaveModule_Click;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(224, 15);
+            label10.Name = "label10";
+            label10.Size = new Size(190, 25);
+            label10.TabIndex = 2;
+            label10.Text = "Personel İzin Modulü";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(684, 602);
+            Controls.Add(P_PersonalLeaveModule);
             Controls.Add(P_PersonalPositionModule);
             Controls.Add(P_PersonalEducationModule);
             Controls.Add(P_PersonalFileModule);
@@ -775,6 +889,9 @@
             P_PersonalPositionModule.ResumeLayout(false);
             P_PersonalPositionModule.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_PersonalPositionModule).EndInit();
+            P_PersonalLeaveModule.ResumeLayout(false);
+            P_PersonalLeaveModule.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGV_PersonalLeaveModule).EndInit();
             ResumeLayout(false);
         }
 
@@ -850,5 +967,15 @@
         private Label label6;
         private ComboBox CB_Seniority_PersonalPositionModule;
         private TextBox TB_Salary_PersonalPositionModule;
+        private Panel P_PersonalLeaveModule;
+        private DateTimePicker DTP_LeaveDate_PersonalLeaveModule;
+        private Button B_PreviousPage_PersonalLeaveModule;
+        private Label label7;
+        private Label label9;
+        private ComboBox CB_ID_PersonalLeaveModule;
+        private TextBox TB_Description_PersonalLeaveModule;
+        private DataGridView DGV_PersonalLeaveModule;
+        private Button B_Enter_PersonalLeaveModule;
+        private Label label10;
     }
 }
