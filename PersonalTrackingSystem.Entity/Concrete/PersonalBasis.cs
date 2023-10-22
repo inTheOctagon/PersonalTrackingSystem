@@ -18,5 +18,9 @@ namespace PersonalTrackingSystem.Entity.Concrete
         public string FathersName { get; set; }
         public string City {  get; set; }
         public string MaritalStatus { get; set; }
+
+        //Navs:
+        public PersonalEducation PersonalEducation { get; set; }
+        public PersonalFile PersonalFile { get; set; }
     }
 }

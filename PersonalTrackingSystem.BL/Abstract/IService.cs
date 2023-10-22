@@ -13,6 +13,6 @@ namespace PersonalTrackingSystem.BL.Abstract
         void Delete(T entity);
         void Update(T entity);
         T? Get(int id);
-        List<T> GetAll(T entity);
+        List<T> GetAll();
     }
 }

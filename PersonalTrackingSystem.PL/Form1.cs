@@ -13,7 +13,15 @@ namespace PersonalTrackingSystem.PL
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            #region Setting Managers
             personalBasisManager = new BaseManager<PersonalBasis>();
+            #endregion
+
+            #region Setting DGVs
+            DGV_PersonalBasisModule.DataSource = personalBasisManager.GetAll();
+            #endregion
+
         }
 
         #region PersonalBasisModule
@@ -29,6 +37,7 @@ namespace PersonalTrackingSystem.PL
                 string.IsNullOrEmpty(TB_MothersName_PersonalBasisModule.Text) &&
                 string.IsNullOrEmpty(TB_FathersName_PersonalBasisModule.Text) &&
                 string.IsNullOrEmpty(TB_MaritalStatus_PersonalBasisModule.Text) &&
+                string.IsNullOrEmpty(TB_PhotoPath_PersonalBasisModule.Text) &&
                 int.TryParse(TB_TIN_PersonalBasisModule.Text, out TIN))
             {
                 PersonalBasis pb = new()
@@ -50,8 +59,22 @@ namespace PersonalTrackingSystem.PL
             {
                 MessageBox.Show("Bütün verilerin uygun bir biçimde girildiðinden emin olunuz.");
             }
-        }
-        #endregion
 
+
+        }
+
+        private void B_PhotoPath_PersonalBasisModule_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = true;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                TB_PhotoPath_PersonalBasisModule.Text = choofdlog.FileName;
+            }
+            #endregion
+        }
     }
 }

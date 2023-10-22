@@ -37,7 +37,7 @@ namespace PersonalTrackingSystem.BL.Concrete
             return repository.Get(id);
         }
 
-        public virtual List<T> GetAll(T entity)
+        public virtual List<T> GetAll()
         {
             return repository.GetAll();
         }  
