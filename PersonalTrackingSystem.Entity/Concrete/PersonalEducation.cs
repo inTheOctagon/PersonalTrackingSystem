@@ -12,6 +12,8 @@ namespace PersonalTrackingSystem.Entity.Concrete
         public string InstitutionName { get; set; }
         public string EducationType { get; set; }
         public string CertificatePath { get; set; }
+
+        //Navs
         public PersonalBasis PersonalBasis { get; set; }
         public int PersonalID { get; set; }
     }

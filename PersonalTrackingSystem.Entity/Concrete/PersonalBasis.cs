@@ -16,11 +16,14 @@ namespace PersonalTrackingSystem.Entity.Concrete
         public string BirthPlace { get; set; }
         public string MothersName { get; set; }
         public string FathersName { get; set; }
-        public string City {  get; set; }
+        public string City { get; set; }
         public string MaritalStatus { get; set; }
 
         //Navs:
         public PersonalEducation PersonalEducation { get; set; }
         public PersonalFile PersonalFile { get; set; }
+        public PersonalPosition PersonalPosition { get; set; }
+        public ICollection<PersonalLeave> PersonalLeaves { get; set; }
+
     }
 }
